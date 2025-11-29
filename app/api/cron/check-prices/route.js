@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import { scrapeProduct } from "@/lib/firecrawl";
 import { sendPriceDropAlert } from "@/lib/email";
 
@@ -12,13 +12,19 @@ export async function POST(request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const supabase = await createClient();
+    // Use service role to bypass RLS
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
 
     const { data: products, error: productsError } = await supabase
       .from("products")
       .select("*");
 
     if (productsError) throw productsError;
+
+    console.log(`Found ${products.length} products to check`);
 
     const results = {
       total: products.length,
@@ -60,7 +66,6 @@ export async function POST(request) {
 
           results.priceChanges++;
 
-          // Get user email for alerts
           if (newPrice < oldPrice) {
             const {
               data: { user },
