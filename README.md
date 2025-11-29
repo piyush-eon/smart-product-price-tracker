@@ -7,11 +7,8 @@ Track product prices across e-commerce sites and get alerts on price drops. Buil
 - 🔍 **Track Any Product** - Works with Amazon, Zara, Walmart, and more
 - 📊 **Price History Charts** - Interactive graphs showing price trends over time
 - 🔐 **Google Authentication** - Secure sign-in with Google OAuth
-- ⚡ **Powered by Firecrawl** - Lightning-fast scraping with AI-powered data extraction
 - 🔄 **Automated Daily Checks** - Scheduled cron jobs check prices automatically
 - 📧 **Email Alerts** - Get notified when prices drop via Resend
-- 📱 **Responsive Design** - Beautiful UI with shadcn/ui components
-- 🔒 **Secure** - Row Level Security with Supabase
 
 ## 🛠️ Tech Stack
 
@@ -454,19 +451,6 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
-
-- [Firecrawl](https://firecrawl.dev) - For making web scraping simple and reliable
-- [Supabase](https://supabase.com) - For the amazing backend platform
-- [Resend](https://resend.com) - For developer-friendly email API
-- [shadcn/ui](https://ui.shadcn.com) - For beautiful UI components
-
-## 📧 Support
-
-- **Issues:** [GitHub Issues](https://github.com/yourusername/dealdrop/issues)
-- **Email:** your.email@example.com
-- **Twitter:** [@yourhandle](https://twitter.com/yourhandle)
-
 ---
 
-Built with ❤️ using Next.js, Firecrawl, and Supabase
+Built with ❤️ by RoadsideCoder using Next.js, Firecrawl, and Supabase
