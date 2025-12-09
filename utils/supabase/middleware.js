@@ -1,3 +1,5 @@
+// https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs?queryGroups=language&language=js#nextjs-middleware
+
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
 

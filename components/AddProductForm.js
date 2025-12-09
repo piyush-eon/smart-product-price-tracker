@@ -5,14 +5,12 @@ import { addProduct } from "@/app/actions";
 import AuthModal from "./AuthModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export default function AddProductForm({ user }) {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -24,8 +22,6 @@ export default function AddProductForm({ user }) {
     }
 
     setLoading(true);
-    setError("");
-    setSuccess("");
 
     const formData = new FormData();
     formData.append("url", url);
@@ -33,13 +29,10 @@ export default function AddProductForm({ user }) {
     const result = await addProduct(formData);
 
     if (result.error) {
-      setError(result.error);
+      toast.error(result.error);
     } else {
-      setSuccess(result.message || "Product tracked successfully!");
+      toast.success(result.message || "Product tracked successfully!");
       setUrl("");
-
-      // Clear success message after 3 seconds
-      setTimeout(() => setSuccess(""), 3000);
     }
 
     setLoading(false);
@@ -54,10 +47,11 @@ export default function AddProductForm({ user }) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Paste product URL (Amazon, Walmart, etc.)"
-            className=" h-12 text-base"
+            className="h-12 text-base"
             required
             disabled={loading}
           />
+
           <Button
             type="submit"
             disabled={loading}
@@ -74,20 +68,6 @@ export default function AddProductForm({ user }) {
             )}
           </Button>
         </div>
-
-        {error && (
-          <Alert variant="destructive" className="mt-4">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        {success && (
-          <Alert className="mt-4 border-green-200 bg-green-50 text-green-800">
-            <CheckCircle2 className="h-4 w-4 text-green-600" />
-            <AlertDescription>{success}</AlertDescription>
-          </Alert>
-        )}
       </form>
 
       <AuthModal

@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@mendable/firecrawl-js": "^1.21.1",
+    "@mendable/firecrawl-js": "^1.29.3",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.4",
     "@supabase/ssr": "^0.8.0",
@@ -18,10 +18,12 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
     "next": "16.0.5",
+    "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "recharts": "^3.5.1",
     "resend": "^6.5.2",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
